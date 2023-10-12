@@ -1,0 +1,165 @@
+﻿<Window x:Class="Bibliotekaa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bibliotekaa"
+        mc:Ignorable="d"
+                Title="Biblioteka" Height="1200" Width="1920"
+        MinHeight="900" MinWidth="960">
+    <Grid Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <!--<RowDefinition Height="*"/>-->
+        </Grid.RowDefinitions>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>-->
+        <DockPanel Background="LightGreen" Margin="0,41,0,0">
+
+            <Label Content="BiBlyaOteka777" FontSize="35pt"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center" FontFamily="Arial"
+                      Foreground="Black"/>
+
+        </DockPanel>
+
+
+        <TabControl
+                    VerticalAlignment="Top"
+                    Grid.Row="1"
+                    Background="DarkOliveGreen">
+            <TabItem FontSize="30pt" Foreground="Coral" Header="Пользователи">
+                <StackPanel>
+                    <ListView FontSize="25pt"  Name="ReadersList" VerticalAlignment="Bottom"
+                          SelectionChanged="ReaderList_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="150" Header="Айди" DisplayMemberBinding="{Binding Path=Id}"/>
+                                <GridViewColumn Width="400" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"/>
+                                <GridViewColumn Width="400" Header="Фамилия" DisplayMemberBinding="{Binding Path=Surname}"/>
+                                <GridViewColumn Width="250"   Header="Книги" DisplayMemberBinding="{Binding Path=Books}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Имя
+                        </Label>
+                        <TextBox Name="nameText" HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" Height="50" Width="1600"
+                                 Margin="-300 0 0 0" FontSize="20pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="250">
+                            Фамилия
+                        </Label>
+                        <TextBox Name="surnameText" HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" Height="50" Width="1600"
+                                 Margin="-300 0 0 0" FontSize="20pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Книги
+                        </Label>
+                        <TextBox Name="BooksText" HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" Height="50" Width="1600"
+                                 Margin="-300 0 0 0" FontSize="20pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300" FontSize="25pt" Content="ID"/>
+                        <TextBox x:Name="idText" HorizontalAlignment="Right"
+                                 VerticalAlignment="Center" Height="50" Width="1600"
+                                 Margin="-300 0 0 0" FontSize="20pt"/>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem FontSize="30pt"  Foreground="Coral" Header="Книжки">
+                <StackPanel>
+                    <ListView Name="BooksList" VerticalAlignment="Bottom"
+                              SelectionChanged="BooksList_SelectionChanged"
+                              FontSize="20pt" Background="White" Foreground="#FF0C2669">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="350" Header="Автор" DisplayMemberBinding="{Binding Path=Author}"/>
+                                <GridViewColumn Width="350" Header="Артикул" DisplayMemberBinding="{Binding Path=VendorCode}"/>
+                                <GridViewColumn Width="350" Header="Год" DisplayMemberBinding="{Binding Path=Year}"/>
+                                <GridViewColumn Width="350" Header="Количество" DisplayMemberBinding="{Binding Path=Amount}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Автор
+                        </Label>
+                        <TextBox Name="authorText" HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" Height="30" Width="400"
+                                 Margin="-300 0 0 0" FontSize="15pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Артикул
+                        </Label>
+                        <TextBox Name="vendorCodeText" HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" Height="30" Width="400"
+                                 Margin="-300 0 0 0" FontSize="15pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Год
+                        </Label>
+                        <TextBox Name="yearText" HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" Height="30" Width="400"
+                                 Margin="-300 0 0 0" FontSize="15pt"/>
+                    </DockPanel>
+                    <DockPanel Background="DarkGreen">
+                        <Label Width="300">
+                            Количество
+                        </Label>
+                        <TextBox Name="amountText" HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" Height="30" Width="400"
+                                 Margin="-300 0 0 0" FontSize="15pt"/>
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Center"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem FontSize="30pt" Foreground="Coral" Header="Выдать книжку">
+                <StackPanel Background="LawnGreen">
+                    <Label Content="Выдача книг" HorizontalAlignment="Center"/>
+                    <ListView Name="ReadersAddList"  FontSize="25pt" Background="#90EE90">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="150" Header="Айди" DisplayMemberBinding="{Binding Path=Id}"/>
+                                <GridViewColumn Width="400" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"/>
+                                <GridViewColumn Width="400" Header="Фамилия" DisplayMemberBinding="{Binding Path=Surname}"/>
+                                <GridViewColumn Width="250" Header="Книги" DisplayMemberBinding="{Binding Path=Books}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Name="BooksAddList" FontSize="24pt" Background="SeaGreen" Height="134" Width="1878">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="350" Header="Автор" DisplayMemberBinding="{Binding Path=Author}"/>
+                                <GridViewColumn Width="350" Header="Артикул" DisplayMemberBinding="{Binding Path=VendorCode}"/>
+                                <GridViewColumn Width="350" Header="Год" DisplayMemberBinding="{Binding Path=Year}"/>
+                                <GridViewColumn Width="350" Header="Количество" DisplayMemberBinding="{Binding Path=Amount}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Name="AddBookTo" Content="Выдать Книжку" FontSize="24pt" Click="AddBookToUser" Width="260"
+                            Height="100" Background="PaleGreen">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                            </Style>
+                        </Button.Resources>
+
+                    </Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
